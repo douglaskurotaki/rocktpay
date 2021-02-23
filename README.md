@@ -100,3 +100,23 @@ Create de action `index`
 ```ex
 def index(conn, _params)
 ```
+
+---
+
+# Create Logical
+## To read a file 
+```ex
+File.read("#{filename}.csv")
+```
+
+## To open console/console with project
+```
+iex
+iex -S mix
+```
+
+## 1 row function
+```
+defp handle_file({:ok, file}), do file
+```
+if the params is :ok, this return the file
