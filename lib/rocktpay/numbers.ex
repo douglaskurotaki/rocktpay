@@ -12,7 +12,8 @@ defmodule Rocktpay.Numbers do
     result =      # pipe operator para atribuicao e parametros
       result
       |> String.split(",")
-      |> Enum.map(fn number -> String.to_integer(number) end)
+      # |> Enum.map(fn number -> String.to_integer(number) end) # esse executa varias vezes passando o valor para o parametro
+      |> Stream.map(fn number -> String.to_integer(number) end) # eh mais perfomatico nessa situacao pois ele vai executar somente uma vez
       |> Enum.sum()
 
     {:ok, %{result: result}}
@@ -22,5 +23,5 @@ defmodule Rocktpay.Numbers do
     # result = Enum.sum(result)
     # result
   end
-  defp handle_file({:error, _reason}), do: {:error, "Invalid File!"}
+  defp handle_file({:error, _reason}), do: {:error, %{message: "Invalid File!"}}
 end

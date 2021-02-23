@@ -1,7 +1,24 @@
 defmodule RocktpayWeb.WelcomeController do
   use RocktpayWeb, :controller
 
-  def index(conn, _params) do
-    text(conn, "Welcome to the Rocketpay API")
+  alias Rocktpay.Numbers
+
+  def index(conn, %{"filename" => filename}) do
+    filename
+    |> Numbers.sum_from_file() # Aqui nao precisamos usar o Rocktpay.Numbers, pois usamos o alias, que pega somente o ultimo nome depois do '.'
+    |> handle_response(conn)
+  end
+
+  defp handle_response({:ok, %{result: result}}, conn) do
+    conn
+    |> put_status(:ok)
+    # |> IO.Inspect()
+    |> json(%{message: "Welcome to Rocketpay API. Here is your number #{result}"})
+  end
+
+  defp handle_response({:error, reason}, conn) do
+    conn
+    |> put_status(:bad_request)
+    |> json(reason)
   end
 end
