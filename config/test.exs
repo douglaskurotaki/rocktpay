@@ -6,7 +6,7 @@ use Mix.Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :rocktpay, Rocktpay.Repo,
-  username: "postgres",
+  username: "dkurotaki",
   password: "postgres",
   database: "rocktpay_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
