@@ -137,3 +137,16 @@ mix ecto.gen.migration create_user_table
 ```
 mix ecto.migrate
 ```
+
+## To drop the database
+```
+mix ecto.drop
+```
+
+## Config to use binary id for pk and fk
+```
+config :rocktpay, Rocktpay.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreing_key: [type: :binary_id]
+```
+
