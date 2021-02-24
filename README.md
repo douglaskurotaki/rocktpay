@@ -121,6 +121,19 @@ defp handle_file({:ok, file}), do file
 ```
 if the params is :ok, this return the file
 
+---
 
+## To check if the database was created
+```
+mix exto.create
+```
 
-#rumoaoproximonivel
+## To create any migration
+```
+mix ecto.gen.migration create_user_table
+```
+
+## To run the migration
+```
+mix ecto.migrate
+```
