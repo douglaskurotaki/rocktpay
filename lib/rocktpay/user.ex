@@ -2,6 +2,7 @@ defmodule Rocktpay.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Rocktpay.Account
   alias Ecto.Changeset
 
   # binary_id -- uuid
@@ -17,6 +18,7 @@ defmodule Rocktpay.User do
     field :password, :string, virtual: true
     field :password_hash, :string
     field :nickname, :string
+    has_one :account, Account
 
     timestamps()
   end
