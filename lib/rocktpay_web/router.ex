@@ -11,6 +11,9 @@ defmodule RocktpayWeb.Router do
     get "/:filename", WelcomeController, :index
 
     post "/user", UsersController, :create
+
+    post "/accounts/:id/deposit", AccountsController, :deposit
+    post "/accounts/:id/withdraw", UsersController, :withdraw
   end
 
   # Enables LiveDashboard only for development
