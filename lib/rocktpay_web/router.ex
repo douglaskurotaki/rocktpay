@@ -13,7 +13,7 @@ defmodule RocktpayWeb.Router do
     post "/user", UsersController, :create
 
     post "/accounts/:id/deposit", AccountsController, :deposit
-    post "/accounts/:id/withdraw", UsersController, :withdraw
+    post "/accounts/:id/withdraw", AccountsController, :withdraw
   end
 
   # Enables LiveDashboard only for development

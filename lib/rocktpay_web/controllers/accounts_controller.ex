@@ -12,4 +12,12 @@ defmodule RocktpayWeb.AccountsController do
       |> render("update.json", account: account)
     end
   end
+
+  def withdraw(conn, params) do
+    with {:ok, %Account{} = account} <- Rocktpay.withdraw(params) do
+      conn
+      |> put_status(:ok)
+      |> render("update.json", account: account)
+    end
+  end
 end
