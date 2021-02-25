@@ -6,16 +6,13 @@ defmodule RocktpayWeb.UsersController do
   action_fallback RocktpayWeb.FallbackController
 
   def create(conn, params) do
-    params
-    |> Rocktpay.create_user()
-    |> handle_response(conn)
+    # with eh como uma pattern match, que verifica no caso o parametro {:ok, %User{} = user}
+    # Caso passe, ele faz a criacao e a rendereizacao, caso nao, ele devolve o erro pra quem o chamou
+    # que no caso quem valida esse erro eh o fallback
+    with {:ok, %User{} = user} <- Rocktpay.create_user(params) do
+      conn
+      |> put_status(:created)
+      |> render("create.json", user: user)
+    end
   end
-
-  defp handle_response({:ok, %User{} = user}, conn) do
-    conn
-    |> put_status(:created)
-    |> render("create.json", user: user)
-  end
-
-  defp handle_response({:error, _result} = error, _conn), do: error
 end
