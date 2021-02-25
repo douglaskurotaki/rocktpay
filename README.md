@@ -150,3 +150,6 @@ config :rocktpay, Rocktpay.Repo,
   migration_foreing_key: [type: :binary_id]
 ```
 
+---
+
+`mix ecto.gen.migration create_accounts_table`
