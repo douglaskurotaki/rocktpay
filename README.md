@@ -161,3 +161,8 @@ params = %{user_id: "be7a4e5b-8a9d-4acf-8557-2cdf2c6a0c25", balance: "0.00"}
 params |> Rocktpay.Account.changeset() |> Rocktpay.Repo.insert()
 Rocktpay.Repo.all(Rocktpay.User) |> Rocktpay.Repo.preload(:account) # load with account
 ```
+
+---
+
+### Ecto.Multi
+give multi transactions

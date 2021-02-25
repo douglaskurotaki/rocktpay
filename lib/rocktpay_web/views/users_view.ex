@@ -1,10 +1,14 @@
 defmodule RocktpayWeb.UsersView do
-  alias Rocktpay.User
+  alias Rocktpay.{Account, User}
 
   def render(
     "create.json",
     %{
       user: %User{
+        account: %Account{
+          id: account,
+          balance: balance
+        },
         id: id,
         name: name,
         nickname: nickname
@@ -16,7 +20,11 @@ defmodule RocktpayWeb.UsersView do
       user: %{
         id: id,
         name: name,
-        nickname: nickname
+        nickname: nickname,
+        account: %{
+          id: account,
+          balance: balance
+        }
       }
     }
   end
