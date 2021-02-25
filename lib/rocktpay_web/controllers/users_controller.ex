@@ -3,6 +3,8 @@ defmodule RocktpayWeb.UsersController do
 
   alias Rocktpay.User
 
+  action_fallback RocktpayWeb.FallbackController
+
   def create(conn, params) do
     params
     |> Rocktpay.create_user()
@@ -15,10 +17,5 @@ defmodule RocktpayWeb.UsersController do
     |> render("create.json", user: user)
   end
 
-  defp handle_response({:error, reason}, conn) do
-    conn
-    |> put_status(:bad_request)
-    |> put_view(RocktpayWeb.ErrorView)
-    |> render("400.json", result: reason)
-  end
+  defp handle_response({:error, _result} = error, _conn), do: error
 end
