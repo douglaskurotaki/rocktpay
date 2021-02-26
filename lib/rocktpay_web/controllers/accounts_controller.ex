@@ -2,6 +2,7 @@ defmodule RocktpayWeb.AccountsController do
   use RocktpayWeb, :controller
 
   alias Rocktpay.Account
+  alias Rocktpay.Accounts.Transactions.Response, as: TransactionResponse
 
   action_fallback RocktpayWeb.FallbackController
 
@@ -22,7 +23,7 @@ defmodule RocktpayWeb.AccountsController do
   end
 
   def transaction(conn, params) do
-    with {:ok, %{} = transaction} <- Rocktpay.transaction(params) do
+    with {:ok, %TransactionResponse{} = transaction} <- Rocktpay.transaction(params) do
       conn
       |> put_status(:ok)
       |> render("transaction.json", transaction: transaction)
