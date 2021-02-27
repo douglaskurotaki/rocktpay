@@ -23,6 +23,9 @@ defmodule RocktpayWeb.AccountsController do
   end
 
   def transaction(conn, params) do
+    # task = Task.async(fn -> Rocktpay.transaction(params) end)
+    # result = Task.await(task)
+
     with {:ok, %TransactionResponse{} = transaction} <- Rocktpay.transaction(params) do
       conn
       |> put_status(:ok)
