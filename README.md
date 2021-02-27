@@ -166,3 +166,18 @@ Rocktpay.Repo.all(Rocktpay.User) |> Rocktpay.Repo.preload(:account) # load with 
 
 ### Ecto.Multi
 give multi transactions
+
+--- 
+
+# Auth Insomnia/Postman
+### if insomnia
+In basic, set **Basic Auth** and insert the username and password
+### if postman
+In Header:
+- Content Type: **Authorization**
+- application/json: **Basic username:password**
+**remembet that the username:password should be base64**
+In iex we can convert to this type:
+`Base.encode64("banana:nanica123")`
+`"YmFuYW5hOm5hbmljYTEyMw=="`
+**Basic YmFuYW5hOm5hbmljYTEyMw==**
