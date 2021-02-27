@@ -1,5 +1,5 @@
 defmodule Rocktpay.NumbersTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Rocktpay.Numbers
 

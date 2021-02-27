@@ -181,3 +181,9 @@ In iex we can convert to this type:
 `Base.encode64("banana:nanica123")`
 `"YmFuYW5hOm5hbmljYTEyMw=="`
 **Basic YmFuYW5hOm5hbmljYTEyMw==**
+
+---
+
+# To se the covert test of project
+`mix test --cover`
+`mix coveralls.html` -> Create report html
